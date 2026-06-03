@@ -1,0 +1,8 @@
+@software{frommann2026fuzzygoal,
+    author       = {Frommann, Olaf},
+    title        = {FuzzyGoal: A C++ Library for Fuzzy-Logic-Based Objective Functions},
+    year         = {2026},
+    url          = {https://github.com/of33/FuzzyGoal},
+    version      = {1.0},
+    license      = {LGPL-3.0-or-later}
+}
