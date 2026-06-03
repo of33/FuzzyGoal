@@ -1,4 +1,10 @@
-# FuzzyGoal
+<p align="center">
+<img src="FuzzyGoal_Logo.png" alt="FuzzyGoal logo" width="420"/>
+</p>
+
+<p align="center">
+<strong>A C++ Library for Fuzzy-Logic-Based Objective Functions</strong>
+</p>
 
 **FuzzyGoal** is a lightweight C++ library for constructing and evaluating
 fuzzy-logic-based objective functions for multi-criteria optimization.
@@ -166,13 +172,13 @@ scientific work:
 > and Solution-Space Topography*,
 > 2026.
 
-Repository:
+Available:
 
 ```text
-https://github.com/of33/OFMCO
+https://zenodo.org/records/
 ```
 
-DOI / arXiv information will be added once available.
+DOI information will be added once available.
 
 ---
 
@@ -245,8 +251,8 @@ If a DOI is assigned to a release, please use the DOI-based citation instead.
     title        = {Objective Functions in Multi-Criteria Optimization:
         Weighting, Fuzzy Logic, and Solution-Space Topography},
         year         = {2026},
-        url          = {https://github.com/of33/OFMCO},
-        note         = {DOI or arXiv identifier to be added}
+        url          = {https://zenodo.org/records/},
+        note         = {DOI identifier to be added}
 }
 ```
 
