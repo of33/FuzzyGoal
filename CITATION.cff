@@ -1,9 +1,11 @@
-@software{frommann2026fuzzygoal,
-    author       = {Frommann, Olaf},
-    title        = {FuzzyGoal: A C++ Library for Fuzzy-Logic-Based Objective Functions},
-    year         = {2026},
-    url          = {https://github.com/of33/FuzzyGoal},
-    version      = {1.0},
-    license      = {LGPL-3.0-or-later},
-    doi          = {10.5281/zenodo.20533391}
-}
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: Frommann
+given-names: Olaf
+orcid: "https://orcid.org/0009-0004-2614-4392"
+title: "FuzzyGoal: A C++ Library for Fuzzy-Logic-Based Objective Functions"
+version: 1.0.0
+date-released: 2026-03-06
+doi: 10.5281/zenodo.20533391
+url: "https://github.com/of33/FuzzyGoal"
