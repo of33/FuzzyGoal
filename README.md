@@ -237,7 +237,8 @@ please cite both the software and the accompanying theoretical work.
     year         = {2026},
     version      = {1.0},
     url          = {https://github.com/of33/FuzzyGoal},
-    license      = {LGPL-3.0-or-later}
+    license      = {LGPL-3.0-or-later},
+    doi          = {10.5281/zenodo.20533391}
 }
 ```
 

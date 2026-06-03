@@ -4,5 +4,6 @@
     year         = {2026},
     url          = {https://github.com/of33/FuzzyGoal},
     version      = {1.0},
-    license      = {LGPL-3.0-or-later}
+    license      = {LGPL-3.0-or-later},
+    doi          = {10.5281/zenodo.20533391}
 }
