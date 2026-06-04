@@ -9,7 +9,7 @@
 <p align="center">
 <a href="https://github.com/of33/FuzzyGoal/actions/workflows/build-and-test.yml"><img src="https://github.com/of33/FuzzyGoal/actions/workflows/build-and-test.yml/badge.svg" alt="Build and test"></a>
 &nbsp;&nbsp;
-<a href="https://doi.org/10.5281/zenodo.20533391"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.20533391.svg" alt="DOI"></a>
+<a href="https://doi.org/10.5281/zenodo.20548728"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.20548728.svg" alt="DOI"></a>
 &nbsp;&nbsp;
 <a href="https://www.gnu.org/licenses/lgpl-3.0"><img src="https://img.shields.io/badge/License-LGPL--3.0--or--later-blue.svg" alt="License: LGPL-3.0-or-later"></a>
 </p>
@@ -266,7 +266,7 @@ please cite both the software and the accompanying theoretical work.
     version      = {1.0},
     url          = {https://github.com/of33/FuzzyGoal},
     license      = {LGPL-3.0-or-later},
-    doi          = {DOI will be added after the first GitHub release.}
+    doi          = {10.5281/zenodo.20548728}
 }
 ```
 
