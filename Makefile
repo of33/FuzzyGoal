@@ -41,6 +41,10 @@ EXAMPLE_DIR  := examples
 EXAMPLE_SRCS := $(wildcard $(EXAMPLE_DIR)/*.cpp)
 EXAMPLE_NAMES := $(basename $(notdir $(EXAMPLE_SRCS)))
 
+TEST_DIR := tests
+TEST_SRC := $(TEST_DIR)/test_fuzzygoal.cpp
+TEST_BIN := $(BIN_DIR)/test_fuzzygoal$(EXEEXT)
+
 ifeq ($(OS),Windows_NT)
 EXEEXT := .exe
 else
@@ -49,7 +53,7 @@ endif
 
 EXAMPLE_BINS := $(addprefix $(BIN_DIR)/,$(addsuffix $(EXEEXT),$(EXAMPLE_NAMES)))
 
-.PHONY: all check-compiler dirs run clean help run_basic run_topography run_equality
+.PHONY: all check-compiler dirs run test clean help run_basic run_topography run_equality
 
 all: check-compiler dirs $(EXAMPLE_BINS)
 	@echo
@@ -84,6 +88,9 @@ $(LIB_OBJ): $(LIB_SRC) $(LIB_HDR) | dirs
 
 $(BIN_DIR)/%$(EXEEXT): $(EXAMPLE_DIR)/%.cpp $(LIB_OBJ) $(LIB_HDR) | dirs
 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $< $(LIB_OBJ) -o $@ $(LDFLAGS)
+
+$(TEST_BIN): $(TEST_SRC) $(LIB_OBJ) $(LIB_HDR) | dirs
+	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(TEST_SRC) $(LIB_OBJ) -o $(TEST_BIN) $(LDFLAGS)
 
 # -------------------------------------------------------------
 # Spezifische Run & Plot Targets
@@ -125,6 +132,11 @@ run: all
 		echo; \
 	done
 
+test: check-compiler dirs $(TEST_BIN)
+	@echo
+	@echo "Running FuzzyGoal tests..."
+	@./$(TEST_BIN)
+
 clean:
 	@rm -rf $(BUILD_DIR) $(BIN_DIR)
 	@rm -f *.dat *.png
@@ -138,4 +150,5 @@ help:
 	@echo "  make run_topography   run test 2 and plot with gnuplot"
 	@echo "  make run_equality     run test 3 and plot with gnuplot"
 	@echo "  make run              run all examples (no plotting)"
+	@echo "  make test             build and run the test suite"
 	@echo "  make clean            remove build files, .dat and .png files"

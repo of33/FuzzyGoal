@@ -1,10 +1,20 @@
 <p align="center">
-<img src="FuzzyGoal_Logo.png" alt="FuzzyGoal logo" width="420"/>
+<img src="FuzzyGoal_Logo.png" alt="FuzzyGoal logo" width="420">
 </p>
 
 <p align="center">
 <strong>A C++ Library for Fuzzy-Logic-Based Objective Functions</strong>
 </p>
+
+<p align="center">
+<a href="https://github.com/of33/FuzzyGoal/actions/workflows/build-and-test.yml"><img src="https://github.com/of33/FuzzyGoal/actions/workflows/build-and-test.yml/badge.svg" alt="Build and test"></a>
+&nbsp;&nbsp;
+<a href="https://doi.org/10.5281/zenodo.20533391"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.20533391.svg" alt="DOI"></a>
+&nbsp;&nbsp;
+<a href="https://www.gnu.org/licenses/lgpl-3.0"><img src="https://img.shields.io/badge/License-LGPL--3.0--or--later-blue.svg" alt="License: LGPL-3.0-or-later"></a>
+</p>
+
+# FuzzyGoal
 
 **FuzzyGoal** is a lightweight C++ library for constructing and evaluating
 fuzzy-logic-based objective functions for multi-criteria optimization.
@@ -29,9 +39,9 @@ Instead, design points may be:
 - or clearly undesirable.
 
 Fuzzy logic provides a natural way to model such gradual transitions. Furthermore,
-it allows in a very simple and reliable manner to combine and asses competing and
-contradictory criteria. FuzzyGoal implements this idea in a compact C++ library
-that can be integrated into existing optimization codes.
+it provides a simple and robust way to combine and assess competing or contradictory
+criteria. FuzzyGoal implements this idea in a compact C++ library that can be
+integrated into existing optimization codes.
 
 The library is intended for users who want to define objective functions based
 on qualitative preference formulations such as:
@@ -50,16 +60,19 @@ or:
 
 - Definition of fuzzy criteria with interval bounds and reference values.
 - Support for both minimization-like and maximization-like criteria:
-- `SmallerIsBetter`
-- `LargerIsBetter`
-- Multiple membership-function variants: linear, parabolic, Gaussian-based.
+  - `SmallerIsBetter`
+  - `LargerIsBetter`
+- Multiple membership-function variants:
+  - linear
+  - parabolic
+  - Gaussian-based
 - Support for equality constraints via internally evaluated absolute deviations.
 - Explicit fuzzy rule creation.
 - Several rule aggregation operators:
-- min/max,
-- product/probabilistic sum,
-- smooth min/max,
-- p-norm aggregation.
+  - min/max
+  - product/probabilistic sum
+  - smooth min/max
+  - p-norm aggregation
 - Defuzzification to a scalar objective value in `[0, 1]`.
 - Detailed status codes for criterion creation, rule creation, and evaluation.
 - Small implementation consisting of one header and one source file.
@@ -125,21 +138,35 @@ int main()
 The repository contains three example programs:
 
 1. **Basic two-criteria example**
-Demonstrates two conflicting criteria and compares a base fuzzy objective
-with a rule-based objective.
+   Demonstrates two conflicting criteria and compares a base fuzzy objective
+   with a rule-based objective.
 
 2. **Two-dimensional topography example**
-Evaluates different fuzzy rule formulations on a two-dimensional parameter
-domain.
+   Evaluates different fuzzy rule formulations on a two-dimensional parameter
+   domain.
 
 3. **Equality constraint example**
-Demonstrates equality constraints, which are internally evaluated as
-absolute deviations from a target value.
+   Demonstrates equality constraints, which are internally evaluated as
+   absolute deviations from a target value.
 
 The examples generate data files and plots using `gnuplot`.
 
 Details on compiling, running, and plotting the examples are provided in the
 User Manual.
+
+---
+
+## Tests
+
+A small regression and API test suite is provided in the `tests/` directory.
+
+Run the tests with:
+
+```bash
+make test
+```
+
+The test executable checks criterion creation, rule creation, evaluation status codes, equality constraints, and a regression case based on the basic two-criteria example.
 
 ---
 
@@ -172,14 +199,9 @@ scientific work:
 > and Solution-Space Topography*,
 > 2026.
 
-Available:
-
-```text
-https://zenodo.org/records/
+```markdown
+A DOI and record URL for the accompanying theoretical work will be added once available.
 ```
-
-DOI information will be added once available.
-
 ---
 
 ## Repository Contents
@@ -190,12 +212,18 @@ Typical repository contents are:
 fuzzygoal.h
 fuzzygoal.cpp
 Makefile
-examples/plot_01_basic.gp
-examples/plot_02_topography.gp
-examples/plot_03_equality.gp
+examples/
+    01_basic_two_criteria.cpp
+    02_extended_testcase1_topography.cpp
+    03_equality_constraint.cpp
+plot_01_basic.gp
+plot_02_topography.gp
+plot_03_equality.gp
+FuzzyGoal_Logo.png
 FuzzyGoal_UserManual.pdf
 CITATION.cff
 LICENSE
+COPYING.LESSER
 README.md
 ```
 
@@ -213,7 +241,7 @@ fuzzygoal.cpp
 FuzzyGoal is licensed under the **GNU Lesser General Public License v3.0 or
 later**.
 
-See the `LICENSE` file for details.
+See `LICENSE` and `COPYING.LESSER` for details.
 
 SPDX identifier:
 
@@ -242,18 +270,15 @@ please cite both the software and the accompanying theoretical work.
 }
 ```
 
-If a DOI is assigned to a release, please use the DOI-based citation instead.
-
 ### Theoretical Background
 
 ```bibtex
 @misc{frommann2026ofmco,
-    author       = {Frommann, Olaf},
-    title        = {Objective Functions in Multi-Criteria Optimization:
-        Weighting, Fuzzy Logic, and Solution-Space Topography},
-        year         = {2026},
-        url          = {https://zenodo.org/records/},
-        note         = {DOI identifier to be added}
+    author = {Frommann, Olaf},
+    title  = {Objective Functions in Multi-Criteria Optimization:
+              Weighting, Fuzzy Logic, and Solution-Space Topography},
+    year   = {2026},
+    note   = {DOI or arXiv identifier to be added}
 }
 ```
 
@@ -261,7 +286,7 @@ If a DOI is assigned to a release, please use the DOI-based citation instead.
 
 ## Status
 
-FuzzyGoal is currently released as version **1.0**.
+FuzzyGoal is currently released as version **1.0.0**.
 
 The public API is documented in the User Manual. Future changes will be tracked
 through release notes and version updates.
