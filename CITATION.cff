@@ -1,11 +1,12 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite it as below."
-authors:
-- family-names: Frommann
-given-names: Olaf
-orcid: "https://orcid.org/0009-0004-2614-4392"
+message: "If you use FuzzyGoal, please cite the software using the Zenodo Concept DOI. For exact reproducibility, cite the version-specific DOI of the release you used."
 title: "FuzzyGoal: A C++ Library for Fuzzy-Logic-Based Objective Functions"
-version: 1.0.0
-date-released: 2026-04-06
-doi: 10.5281/zenodo.20548728
+authors:
+- family-names: "Frommann"
+given-names: "Olaf"
+version: "1.0.1"
+date-released: "2026-06-04"
+license: "LGPL-3.0-or-later"
+repository-code: "https://github.com/of33/FuzzyGoal"
 url: "https://github.com/of33/FuzzyGoal"
+doi: "10.5281/zenodo.20548727"

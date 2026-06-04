@@ -9,7 +9,7 @@
 <p align="center">
 <a href="https://github.com/of33/FuzzyGoal/actions/workflows/build-and-test.yml"><img src="https://github.com/of33/FuzzyGoal/actions/workflows/build-and-test.yml/badge.svg" alt="Build and test"></a>
 &nbsp;&nbsp;
-<a href="https://doi.org/10.5281/zenodo.20548728"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.20548728.svg" alt="DOI"></a>
+<a href="https://doi.org/10.5281/zenodo.20548727"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.20548727.svg" alt="DOI"></a>
 &nbsp;&nbsp;
 <a href="https://www.gnu.org/licenses/lgpl-3.0"><img src="https://img.shields.io/badge/License-LGPL--3.0--or--later-blue.svg" alt="License: LGPL-3.0-or-later"></a>
 </p>
@@ -254,7 +254,9 @@ LGPL-3.0-or-later
 ## How to Cite
 
 If you use FuzzyGoal in scientific work, engineering studies, or publications,
-please cite both the software and the accompanying theoretical work.
+please cite both the software and the accompanying theoretical work. The DOI below
+is the Zenodo Concept DOI for the FuzzyGoal software project. For exact reproducibility,
+use the version-specific DOI of the release that was used.
 
 ### Software
 
@@ -263,10 +265,9 @@ please cite both the software and the accompanying theoretical work.
     author       = {Frommann, Olaf},
     title        = {FuzzyGoal: A C++ Library for Fuzzy-Logic-Based Objective Functions},
     year         = {2026},
-    version      = {1.0},
     url          = {https://github.com/of33/FuzzyGoal},
     license      = {LGPL-3.0-or-later},
-    doi          = {10.5281/zenodo.20548728}
+    doi          = {10.5281/zenodo.20548727}
 }
 ```
 
@@ -281,6 +282,8 @@ please cite both the software and the accompanying theoretical work.
     note   = {DOI or arXiv identifier to be added}
 }
 ```
+For exact reproducibility, please cite the version-specific DOI listed on the
+corresponding Zenodo release page.
 
 ---
 
