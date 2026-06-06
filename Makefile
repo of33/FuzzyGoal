@@ -139,7 +139,7 @@ test: check-compiler dirs $(TEST_BIN)
 
 clean:
 	@rm -rf $(BUILD_DIR) $(BIN_DIR)
-	@rm -f *.dat *.png
+	@rm -f *.dat 01_basic_fuzzy_example.png c1_c2_*.png 03_equality_constraint_example.png
 	@echo "Cleaned build files, .dat files and .png images."
 
 help:

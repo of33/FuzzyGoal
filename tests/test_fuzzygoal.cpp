@@ -29,6 +29,55 @@ namespace
 }
 
 // ============================================================
+// Anchor values tests
+// ============================================================
+
+void testDefuzzificationAnchorValues()
+{
+    std::cout << "\n=== Defuzzification anchor values ===\n";
+
+    FuzzyGoal goal;
+
+    auto c = goal.addCriterion(
+        "c",
+        0.0,
+        1.0,
+        0.5,
+        FuzzyGoal::SmallerIsBetter,
+        FuzzyGoal::LinearRefLinearTol
+    );
+
+    check(c.status == FuzzyGoal::CriterionOk,
+          "criterion for defuzzification anchor test created");
+
+    double objective = -1.0;
+
+    auto status0 = goal.evaluate({{c.id, 0.0}}, objective);
+
+    check(status0 == FuzzyGoal::EvaluationOk,
+          "evaluation at desirable anchor returns EvaluationOk");
+
+    check(approx(objective, 0.0),
+          "pure desirable result maps to objective value 0");
+
+    auto statusRef = goal.evaluate({{c.id, 0.5}}, objective);
+
+    check(statusRef == FuzzyGoal::EvaluationOk,
+          "evaluation at tolerable anchor returns EvaluationOk");
+
+    check(approx(objective, 0.5),
+          "pure tolerable result maps to objective value 0.5");
+
+    auto status1 = goal.evaluate({{c.id, 1.0}}, objective);
+
+    check(status1 == FuzzyGoal::EvaluationOk,
+          "evaluation at undesirable anchor returns EvaluationOk");
+
+    check(approx(objective, 1.0),
+          "pure undesirable result maps to objective value 1");
+}
+
+// ============================================================
 // Criterion creation tests
 // ============================================================
 
@@ -102,6 +151,45 @@ void testCriterionCreation()
 
     check(invalidSigma.status == FuzzyGoal::InvalidSigma,
           "negative sigmaRel for Gaussian membership returns InvalidSigma");
+}
+
+// ============================================================
+// Gaussian Ref tests
+// ============================================================
+
+void testGaussianRefGaussianTol()
+{
+    std::cout << "\n=== GaussianRefGaussianTol ===\n";
+
+    FuzzyGoal goal;
+
+    auto c = goal.addCriterion(
+        "gaussian_ref",
+        0.0,
+        1.0,
+        0.5,
+        FuzzyGoal::SmallerIsBetter,
+        FuzzyGoal::GaussianRefGaussianTol
+    );
+
+    check(c.status == FuzzyGoal::CriterionOk,
+          "GaussianRefGaussianTol criterion with default sigmaRel is created");
+
+    FuzzyGoal::CriterionMembership m;
+
+    auto status = goal.evaluateCriterionMembership(c.id, 0.5, m);
+
+    check(status == FuzzyGoal::EvaluationOk,
+          "GaussianRefGaussianTol membership evaluation succeeds");
+
+    check(approx(m.tolerable, 1.0),
+          "GaussianRefGaussianTol has tolerable = 1 at reference value");
+
+    check(approx(m.desirable, 0.0),
+          "GaussianRefGaussianTol has desirable = 0 at reference value");
+
+    check(approx(m.undesirable, 0.0),
+          "GaussianRefGaussianTol has undesirable = 0 at reference value");
 }
 
 // ============================================================
@@ -452,7 +540,9 @@ void testStatusStrings()
 
 int main()
 {
+    testDefuzzificationAnchorValues();
     testCriterionCreation();
+    testGaussianRefGaussianTol();
     testRuleCreation();
     testEvaluationStatus();
     testCriterionMembershipEvaluation();

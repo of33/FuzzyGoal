@@ -49,6 +49,7 @@ public:
         ParabolicGlobalParabolicTol,
 
         LinearGlobalGaussianTol,
+        GaussianRefGaussianTol,
         GaussianGlobalGaussianTol
     };
 
@@ -429,6 +430,9 @@ private:
             double c, double& md, double& mt, double& mu) const;
 
         void computeLinearDesUndesGlobal_GaussianTolRef(
+            double c, double& md, double& mt, double& mu) const;
+
+        void computeGaussianDesUndesRef_GaussianTolRef(
             double c, double& md, double& mt, double& mu) const;
 
         void computeGaussianDesUndesGlobal_GaussianTolRef(

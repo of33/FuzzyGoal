@@ -33,7 +33,8 @@ namespace
     bool usesGaussian(FuzzyGoal::MembershipFunction mf)
     {
         return mf == FuzzyGoal::LinearGlobalGaussianTol ||
-               mf == FuzzyGoal::GaussianGlobalGaussianTol;
+        mf == FuzzyGoal::GaussianRefGaussianTol ||
+        mf == FuzzyGoal::GaussianGlobalGaussianTol;
     }
 
     FuzzyGoal::AddCriterionStatus validateCriterionInput(
@@ -491,6 +492,45 @@ void FuzzyGoal::SingleCriterion::computeLinearDesUndesGlobal_GaussianTolRef(
     mt = (c <= cRef) ? gaussianTolerableLeft(c) : gaussianTolerableRight(c);
 }
 
+void FuzzyGoal::SingleCriterion::computeGaussianDesUndesRef_GaussianTolRef(
+    double c,
+    double& md,
+    double& mt,
+    double& mu
+) const
+{
+    if (c <= cRef)
+    {
+        mt = gaussianTolerableLeft(c);
+
+        if (direction == SmallerIsBetter)
+        {
+            md = 1.0 - mt;
+            mu = 0.0;
+        }
+        else
+        {
+            md = 0.0;
+            mu = 1.0 - mt;
+        }
+    }
+    else
+    {
+        mt = gaussianTolerableRight(c);
+
+        if (direction == SmallerIsBetter)
+        {
+            md = 0.0;
+            mu = 1.0 - mt;
+        }
+        else
+        {
+            md = 1.0 - mt;
+            mu = 0.0;
+        }
+    }
+}
+
 void FuzzyGoal::SingleCriterion::computeGaussianDesUndesGlobal_GaussianTolRef(
     double c, double& md, double& mt, double& mu) const
 {
@@ -597,6 +637,10 @@ void FuzzyGoal::SingleCriterion::evaluateMemberships(
             computeLinearDesUndesGlobal_GaussianTolRef(c, md, mt, mu);
             break;
 
+        case GaussianRefGaussianTol:
+            computeGaussianDesUndesRef_GaussianTolRef(c, md, mt, mu);
+            break;
+
         case GaussianGlobalGaussianTol:
             computeGaussianDesUndesGlobal_GaussianTolRef(c, md, mt, mu);
             break;
@@ -643,9 +687,9 @@ double FuzzyGoal::Rule::evaluate(double muA, double muB) const
 // =============================================================
 
 FuzzyGoal::Defuzzifier::Defuzzifier()
-: sd(1.0 / 3.0),
+: sd(1.0 / 6.0),
   st(1.0 / 2.0),
-  su(2.0 / 3.0)
+  su(5.0 / 6.0)
 {}
 
 bool FuzzyGoal::Defuzzifier::defuzzify(
@@ -663,7 +707,7 @@ bool FuzzyGoal::Defuzzifier::defuzzify(
         st * inf.tolerable +
         su * inf.undesirable;
 
-    value = 3.0 * (weighted / sum) - 1.0;
+    value = 1.5 * (weighted / sum) - 0.25;
     value = clamp01(value);
 
     return true;
