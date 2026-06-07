@@ -154,7 +154,84 @@ void testCriterionCreation()
 }
 
 // ============================================================
-// Gaussian Ref tests
+// Membership tests
+// ============================================================
+
+void testAllMembershipFunctionsAreUsable()
+{
+    std::cout << "\n=== All membership functions ===\n";
+
+    const FuzzyGoal::MembershipFunction functions[] =
+    {
+        FuzzyGoal::LinearRefLinearTol,
+        FuzzyGoal::LinearRefParabolicTol,
+        FuzzyGoal::LinearGlobalLinearTol,
+        FuzzyGoal::LinearGlobalParabolicTol,
+        FuzzyGoal::ParabolicRefParabolicTol,
+        FuzzyGoal::ParabolicGlobalParabolicTol,
+        FuzzyGoal::LinearGlobalGaussianTol,
+        FuzzyGoal::GaussianRefGaussianTol,
+        FuzzyGoal::GaussianGlobalGaussianTol
+    };
+
+    for (FuzzyGoal::MembershipFunction mf : functions)
+    {
+        FuzzyGoal goal;
+
+        auto c = goal.addCriterion(
+            "criterion",
+            0.0,
+            1.0,
+            0.5,
+            FuzzyGoal::SmallerIsBetter,
+            mf
+        );
+
+        check(c.status == FuzzyGoal::CriterionOk,
+              "membership function can create a criterion");
+
+        if (c.status != FuzzyGoal::CriterionOk)
+            continue;
+
+        FuzzyGoal::CriterionMembership m;
+
+        auto status = goal.evaluateCriterionMembership(
+            c.id,
+            0.5,
+            m
+        );
+
+        check(status == FuzzyGoal::EvaluationOk,
+              "membership function can be evaluated");
+
+        check(m.desirable >= 0.0 && m.desirable <= 1.0,
+              "desirable membership lies in [0, 1]");
+
+        check(m.tolerable >= 0.0 && m.tolerable <= 1.0,
+              "tolerable membership lies in [0, 1]");
+
+        check(m.undesirable >= 0.0 && m.undesirable <= 1.0,
+              "undesirable membership lies in [0, 1]");
+
+        double objective = 0.0;
+
+        auto evalStatus = goal.evaluate(
+            {
+                {c.id, 0.5}
+            },
+            objective
+        );
+
+        check(evalStatus == FuzzyGoal::EvaluationOk,
+              "membership function can be used in objective evaluation");
+
+        check(objective >= 0.0 && objective <= 1.0,
+              "objective value lies in [0, 1]");
+    }
+}
+
+// ============================================================
+// Specific GaussianRefGaussianTol tests
 // ============================================================
 
 void testGaussianRefGaussianTol()
@@ -173,14 +250,17 @@ void testGaussianRefGaussianTol()
     );
 
     check(c.status == FuzzyGoal::CriterionOk,
-          "GaussianRefGaussianTol criterion with default sigmaRel is created");
+          "GaussianRefGaussianTol criterion is created with default sigmaRel");
+
+    if (c.status != FuzzyGoal::CriterionOk)
+        return;
 
     FuzzyGoal::CriterionMembership m;
 
     auto status = goal.evaluateCriterionMembership(c.id, 0.5, m);
 
     check(status == FuzzyGoal::EvaluationOk,
-          "GaussianRefGaussianTol membership evaluation succeeds");
+          "GaussianRefGaussianTol evaluates at reference value");
 
     check(approx(m.tolerable, 1.0),
           "GaussianRefGaussianTol has tolerable = 1 at reference value");
@@ -190,6 +270,14 @@ void testGaussianRefGaussianTol()
 
     check(approx(m.undesirable, 0.0),
           "GaussianRefGaussianTol has undesirable = 0 at reference value");
+
+    status = goal.evaluateCriterionMembership(c.id, 0.0, m);
+
+    check(status == FuzzyGoal::EvaluationOk,
+          "GaussianRefGaussianTol evaluates at lower bound");
+
+    check(approx(m.desirable, 1.0),
+          "GaussianRefGaussianTol has desirable = 1 at lower bound for SmallerIsBetter");
 }
 
 // ============================================================
@@ -542,6 +630,7 @@ int main()
 {
     testDefuzzificationAnchorValues();
     testCriterionCreation();
+    testAllMembershipFunctionsAreUsable();
     testGaussianRefGaussianTol();
     testRuleCreation();
     testEvaluationStatus();
