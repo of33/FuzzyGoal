@@ -198,7 +198,7 @@ scientific work:
 > *Objective Functions in Multi-Criteria Optimization: Weighting, Fuzzy Logic,
 > and Solution-Space Topography*,
 > Technical Report, Version 1.0, 2026.
-> doi: 10.5281/zenodo.20585381.
+> doi: 10.5281/zenodo.20585380.
 
 
 ---
@@ -276,12 +276,16 @@ The mathematical background, motivation, and solution-space-topography
 analysis are described in the accompanying technical report:
 
 ```bibtex
-@misc{frommann2026ofmco,
-    author = {Frommann, Olaf},
-    title  = {Objective Functions in Multi-Criteria Optimization:
-              Weighting, Fuzzy Logic, and Solution-Space Topography},
-    year   = {2026},
-    note   = {10.5281/zenodo.20585381}
+@techreport{frommann2026ofmco,
+    author      = {Frommann, Olaf},
+    title       = {Objective Functions in Multi-Criteria Optimization:
+        Weighting, Fuzzy Logic, and Solution-Space Topography},
+        institution = {Hochschule Bremen},
+        year        = {2026},
+        type        = {Technical Report},
+        version     = {1.0},
+        doi         = {10.5281/zenodo.20585380},
+        url         = {https://doi.org/10.5281/zenodo.20585380}
 }
 ```
 The Zenodo record contains both the English and German versions of the report.
