@@ -10,3 +10,11 @@ license: "LGPL-3.0-or-later"
 repository-code: "https://github.com/of33/FuzzyGoal"
 url: "https://github.com/of33/FuzzyGoal"
 doi: "10.5281/zenodo.20548727"
+references:
+- type: report
+authors:
+- family-names: Frommann
+given-names: Olaf
+title: "Objective Functions in Multi-Criteria Optimization: Weighting, Fuzzy Logic, and Solution-Space Topography"
+year: 2026
+doi: "10.5281/zenodo.20585381"

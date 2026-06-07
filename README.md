@@ -197,11 +197,10 @@ scientific work:
 > Olaf Frommann,
 > *Objective Functions in Multi-Criteria Optimization: Weighting, Fuzzy Logic,
 > and Solution-Space Topography*,
-> 2026.
+> Technical Report, Version 1.0, 2026.
+> doi: 10.5281/zenodo.20585381.
 
-```markdown
-A DOI and record URL for the accompanying theoretical work will be added once available.
-```
+
 ---
 
 ## Repository Contents
@@ -273,23 +272,28 @@ use the version-specific DOI of the release that was used.
 
 ### Theoretical Background
 
+The mathematical background, motivation, and solution-space-topography
+analysis are described in the accompanying technical report:
+
 ```bibtex
 @misc{frommann2026ofmco,
     author = {Frommann, Olaf},
     title  = {Objective Functions in Multi-Criteria Optimization:
               Weighting, Fuzzy Logic, and Solution-Space Topography},
     year   = {2026},
-    note   = {DOI or arXiv identifier to be added}
+    note   = {10.5281/zenodo.20585381}
 }
 ```
-For exact reproducibility, please cite the version-specific DOI listed on the
+The Zenodo record contains both the English and German versions of the report.
+The English version is intended as the primary reference for international
+citation. For exact reproducibility, please cite the version-specific DOI listed on the
 corresponding Zenodo release page.
 
 ---
 
 ## Status
 
-FuzzyGoal is currently released as version **1.0.0**.
+FuzzyGoal is currently released as version **1.0.2**.
 
 The public API is documented in the User Manual. Future changes will be tracked
 through release notes and version updates.
