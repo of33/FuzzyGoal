@@ -187,6 +187,8 @@ The manual contains:
 - troubleshooting information,
 - a full public API reference.
 
+Release history is documented in [`CHANGELOG.md`](CHANGELOG.md).
+
 ---
 
 ## Theoretical Background
