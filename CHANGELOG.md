@@ -7,6 +7,13 @@ and this project uses semantic versioning where applicable.
 
 ---
 
+## [1.1.0] - 2026-06-08
+
+### Changed
+
+- Added JOSS paper
+- Small extension concerning tests in user manual
+
 ## [1.0.3] - 2026-06-08
 
 ### Changed
