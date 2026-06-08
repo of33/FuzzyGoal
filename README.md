@@ -306,6 +306,13 @@ through release notes and version updates.
 
 ---
 
+## Contributing
+
+Bug reports, questions, and pull requests are welcome. Please see
+[`CONTRIBUTING.md`](CONTRIBUTING.md) for details.
+
+---
+
 ## Contact
 
 For questions, suggestions, or bug reports, please use the GitHub issue

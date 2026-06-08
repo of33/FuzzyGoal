@@ -161,6 +161,14 @@ solution-space topography are provided in the accompanying technical report
 [@Frommann2026OFMCO]. The present paper focuses on the software implementation
 and its use in optimization workflows.
 
+# AI usage disclosure
+
+Generative AI assistance (GPT 5.5) was used for language editing, documentation
+structuring, consistency checks, and drafting support. The author reviewed and
+validated the final text, code, tests, mathematical formulations, and scientific
+claims, and remains responsible for the software and the contents of this
+submission.
+
 # Acknowledgements
 
 The author thanks Hochschule Bremen for providing the academic environment in
